@@ -1,0 +1,10 @@
+{
+  "name": "django-i18n",
+  "version": "1.0.0",
+  "description": "CommonJS wrapper for Django i18n",
+  "main": "index.js",
+  "author": "Simon Bartlett <simon@sibartlett.com>t",
+  "license": "BSD-3-Clause",
+  "homepage": "https://github.com/sibartlett/django-i18n",
+  "repository": "git://github.com/sibartlett/django-i18n"
+}
