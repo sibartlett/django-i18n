@@ -4,6 +4,16 @@ if (global.django && global.django.gettext) {
   django = global.django;
 }
 
+Object.defineProperty(String.prototype, 'format', {
+  value: function test() {
+    var args = Array.prototype.slice.call(arguments, 0);
+    return django.interpolate(this, args);
+  },
+  configurable: true,
+  enumerable: false,
+  writeable: true
+});
+
 var config = {
   substitute: null
 };
@@ -28,17 +38,12 @@ var createSubstitute = function(terms, source) {
 
 var wrapStr = function(func) {
   return function() {
-    var src = func.apply(this, arguments);
+    var str = func.apply(this, arguments);
 
     if (config.substitute) {
-      src = config.substitute(src);
+      str = config.substitute(str);
     }
 
-    var str = new String(src);
-    str.format = function() {
-      var args = Array.prototype.slice.call(arguments, 0);
-      return django.interpolate(this, args);
-    };
     return str;
   };
 };
