@@ -23,7 +23,7 @@ var createSubstitute = function(terms, source) {
     var pattern = '\\b' + term + '\\b';
     return {
       pattern: pattern,
-      re: new RegExp(pattern),
+      re: new RegExp(pattern, 'g'),
       term: term,
       substitute: source[term]
     };
