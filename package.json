@@ -1,6 +1,6 @@
 {
   "name": "django-i18n",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "CommonJS wrapper for Django i18n",
   "main": "index.js",
   "author": "Simon Bartlett <simon@sibartlett.com>t",
