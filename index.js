@@ -19,19 +19,27 @@ var config = {
 };
 
 var createSubstitute = function(terms, source) {
-  var pipeline = terms.map(function(term) {
-    var pattern = '\\b' + term + '\\b';
+  var pipeline = terms.map(function(term, index) {
+    var tempTerm = '___' + index + '___';
     return {
-      pattern: pattern,
-      re: new RegExp(pattern, 'g'),
-      term: term,
-      substitute: source[term]
+      passes: [
+        {
+          re: new RegExp('\\b' + term + '\\b', 'g'),
+          substitute: tempTerm
+        },
+        {
+          re: new RegExp('\\b' + tempTerm + '\\b', 'g'),
+          substitute: source[term]
+        },
+      ]
     };
   });
 
   return function(str) {
-    return pipeline.reduce(function(value, sub) {
-      return value.replace(sub.re, sub.substitute);
+    return [0, 1].reduce(function(value, pass) {
+      return pipeline.reduce(function(val, sub) {
+        return val.replace(sub.passes[pass].re, sub.passes[pass].substitute);
+      }, value);
     }, str);
   };
 };
