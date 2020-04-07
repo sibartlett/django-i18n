@@ -63,8 +63,8 @@ var setSubstitutions = function(options) {
 module.exports = {
   setSubstitutions: setSubstitutions,
   gettext: wrapStr(django.gettext),
+  ngettext: wrapStr(django.ngettext),
   // pluralidx: django.pluralidx,
-  // ngettext: wrapStr(django.ngettext),
   // gettext_noop: wrapStr(django.gettext_noop),
   // pgettext: wrapStr(django.pgettext),
   // npgettext: wrapStr(django.npgettext),

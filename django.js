@@ -4,6 +4,10 @@ django.gettext = function (msgid) {
   return msgid;
 };
 
+django.ngettext = function (singular, plural, count) {
+  return (count == 1) ? singular : plural;
+};
+
 django.interpolate = function (fmt, obj, named) {
   if (named) {
     return fmt.replace(/%\(\w+\)s/g, function(match){return String(obj[match.slice(2,-2)])});
@@ -19,9 +23,7 @@ module.exports = django;
 // };
 
 /* gettext identity library */
-// django.ngettext = function (singular, plural, count) {
-//   return (count == 1) ? singular : plural;
-// };
+
 // django.gettext_noop = function (msgid) {
 //   return msgid;
 // };
