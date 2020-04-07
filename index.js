@@ -62,13 +62,13 @@ var setSubstitutions = function(options) {
 
 module.exports = {
   setSubstitutions: setSubstitutions,
-  pluralidx: django.pluralidx,
   gettext: wrapStr(django.gettext),
-  ngettext: wrapStr(django.ngettext),
-  gettext_noop: wrapStr(django.gettext_noop),
-  pgettext: wrapStr(django.pgettext),
-  npgettext: wrapStr(django.npgettext),
-  interpolate: django.interpolate,
-  get_format: django.get_format,
-  formats: django.formats
+  // pluralidx: django.pluralidx,
+  // ngettext: wrapStr(django.ngettext),
+  // gettext_noop: wrapStr(django.gettext_noop),
+  // pgettext: wrapStr(django.pgettext),
+  // npgettext: wrapStr(django.npgettext),
+  // interpolate: django.interpolate,
+  // get_format: django.get_format,
+  // formats: django.formats,
 };
