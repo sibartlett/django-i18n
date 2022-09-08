@@ -5,7 +5,7 @@ if (global.django && global.django.gettext) {
 }
 
 Object.defineProperty(String.prototype, 'format', {
-  value: function test() {
+  value: function format() {
     var args = Array.prototype.slice.call(arguments, 0);
     return django.interpolate(this, args);
   },
@@ -56,12 +56,12 @@ var wrapStr = function(func) {
   };
 };
 
-var setSubstitutions = function(options) {
+var setUiCustomizations = function(options) {
   config.substitute = createSubstitute(options.terms, options.source);
 };
 
 module.exports = {
-  setSubstitutions: setSubstitutions,
+  setUiCustomizations: setUiCustomizations,
   gettext: wrapStr(django.gettext),
   ngettext: wrapStr(django.ngettext),
   // pluralidx: django.pluralidx,
