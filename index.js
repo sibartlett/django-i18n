@@ -14,6 +14,15 @@ Object.defineProperty(String.prototype, 'format', {
   writeable: true
 });
 
+Object.defineProperty(String.prototype, 'withoutUiCustomizations', {
+  value: function withoutUiCustomizations() {
+    return this._original_value || this;
+  },
+  configurable: true,
+  enumerable: false,
+  writeable: true
+});
+
 var config = {
   substitute: null
 };
@@ -46,13 +55,19 @@ var createSubstitute = function(terms, source) {
 
 var wrapStr = function(func) {
   return function() {
-    var str = func.apply(this, arguments);
+    var original = func.apply(this, arguments);
+    var result = original;
 
     if (config.substitute) {
-      str = config.substitute(str);
+      result = config.substitute(original);
     }
 
-    return str;
+    if (result != original) {
+      result = new String(result);
+      result._original_value = original;
+    }
+
+    return result;
   };
 };
 

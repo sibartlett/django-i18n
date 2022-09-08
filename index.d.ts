@@ -12,6 +12,7 @@ declare module 'django-i18n' {
     global {
         interface String {
             format(...args: any[]) : string;
+            withoutUiCustomizations() : String;
         }
     }
   }
