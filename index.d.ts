@@ -7,7 +7,7 @@ declare module 'django-i18n' {
     export function setUiCustomizations(options: IUiCustomizationOptions): void;
     
     export function gettext(msgid: string): String;
-    export function gettext(msgid1: string, msgid2: string, num: Number): String;
+    export function gettext(msgid1: string, msgid2: string, num: number): String;
 
     global {
         interface String {
