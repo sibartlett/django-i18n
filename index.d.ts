@@ -4,6 +4,7 @@ declare module 'django-i18n' {
       source: {};
     }
   
+    export function applyUiCustomizations(str: string): string;
     export function setUiCustomizations(options: IUiCustomizationOptions): void;
     
     export function gettext(msgid: string): String;

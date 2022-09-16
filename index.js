@@ -53,14 +53,18 @@ var createSubstitute = function(terms, source) {
   };
 };
 
+var applyUiCustomizations = function(str) {
+  if (config.substitute) {
+    return config.substitute(str);
+  }
+
+  return str;
+};
+
 var wrapStr = function(func) {
   return function() {
     var original = func.apply(this, arguments);
-    var result = original;
-
-    if (config.substitute) {
-      result = config.substitute(original);
-    }
+    var result = applyUiCustomizations(original);
 
     if (result != original) {
       result = new String(result);
@@ -76,6 +80,7 @@ var setUiCustomizations = function(options) {
 };
 
 module.exports = {
+  applyUiCustomizations: applyUiCustomizations,
   setUiCustomizations: setUiCustomizations,
   gettext: wrapStr(django.gettext),
   ngettext: wrapStr(django.ngettext),
